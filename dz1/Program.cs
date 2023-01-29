@@ -12,27 +12,30 @@ int getUserDate(string message)
     int UserData = int.Parse(Console.ReadLine()!);
     return UserData;
 }
-int getNumbersKey(int numbers)
+int[] getNumbersKey(int numbers)
 {
+    int[] resultArray = new int[numbers];
+    int numberi = 0;
     for (int i = 0; i < numbers; i++)
     {
         Console.ForegroundColor = ConsoleColor.DarkCyan;
         Console.Write($"Введите {i + 1} число: ");
         Console.ResetColor();
-        int num = int.Parse(Console.ReadLine()!);
+        numberi = Convert.ToInt32(Console.ReadLine());
+        resultArray[i] = numberi;
     }
-    return numbers;
+    return resultArray;
 }
-int getUserNum(int array)
+int getUserNum(int[] array)
 {
     int count = 0;
-    for (int i = 0; i < array; i++)
+    for (int i = 0; i < array.Length; i++)
     {
-        if (array > 0) count += 1;
+        if (array[i] > 0) count += 1;
     }
-    return array;
+    return count;
 }
-int numbers = getUserDate("Введите сколько будет чисел: ");
-int res = getNumbersKey(numbers);
+int num = getUserDate("Введите сколько будет чисел: ");
+int[] res = getNumbersKey(num);
 int user = getUserNum(res);
 Console.WriteLine($"Введено чисел больше '0':  {user}");
